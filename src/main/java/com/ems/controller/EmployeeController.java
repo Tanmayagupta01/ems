@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ems.model.Employee;
 import com.ems.repository.EmployeeRepository;
 
-@RestController
+@Controller
 public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
 	@RequestMapping("/employees")
-	public List<Employee> getAllEmployee() {
-		return employeeRepository.findAll();
+	public String getAllEmployee(Model model) {
+//		return employeeRepository.findAll();
+		model.addAttribute("employeeList", employeeRepository.findAll());
+		return "test";
 	}
 
 	@RequestMapping(value = "/employees/add", method = RequestMethod.POST)

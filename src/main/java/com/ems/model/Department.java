@@ -22,6 +22,7 @@ public class Department {
 	private Long id;
 	private String name;
 	private double bonus;
+	@JsonIgnore
 	private List<Employee> employees;
 	
 	@Id
@@ -35,6 +36,7 @@ public class Department {
 	public String getName() {
 		return name;
 	}
+	
 	
 	@OneToMany(mappedBy="department")
 	public List<Employee> getEmployees() {
