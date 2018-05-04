@@ -67,8 +67,8 @@ public class Employee {
 	public String getEmail() {
 		return email;
 	}
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="deptId",nullable=false,insertable=false,updatable=false)
+	@ManyToOne
+	@JoinColumn(name="deptId",insertable=false,updatable=false)
 	
 	public Department getDepartment() {
 		return department;
