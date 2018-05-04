@@ -23,8 +23,9 @@ public class EmployeeController {
 	@RequestMapping("/employees")
 	public String getAllEmployee(Model model) {
 //		return employeeRepository.findAll();
+	//	System.out.println("yes");
 		model.addAttribute("employeeList", employeeRepository.findAll());
-		return "test";
+		return "Employees";
 	}
 
 	@RequestMapping(value = "/employees/add", method = RequestMethod.POST)
@@ -38,6 +39,8 @@ public class EmployeeController {
 		Employee employee = new Employee();
 		employee.setId(id);
 		employeeRepository.delete(employee);
+//		Model model ;
+//		getAllEmployee(model);
 	}
 
 	@RequestMapping("/employee/{id}")
