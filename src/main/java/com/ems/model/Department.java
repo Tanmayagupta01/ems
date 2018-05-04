@@ -22,6 +22,7 @@ public class Department {
 	private Long id;
 	private String name;
 	private double bonus;
+	
 	private List<Employee> employees;
 	
 	@Id

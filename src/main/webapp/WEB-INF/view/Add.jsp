@@ -45,7 +45,7 @@
 			<label for="email">Email Address:</label>
 			<input type="email"  class="form-control" id="email">
 		</div>
-		<input name="save" type="submit" class="btn btn-success">Save</button> &nbsp;
+		<input name="save" type="submit" class="btn btn-success">Save &nbsp;
 		<a class="btn btn-danger" href="#">Cancel</a> 
 	</form>
 	</div>
