@@ -32,9 +32,11 @@ public class EmployeeController {
 	
 	
 	@RequestMapping(value = "/employees/add", method = RequestMethod.POST)
-	public void addEmployee(@RequestBody Employee emp) {
+	public ModelAndView addEmployee(@RequestBody Employee emp) {
 
 		employeeRepository.save(emp);
+		return new ModelAndView("redirect:/employees");
+//		return emp;
 	}
 	
 	@RequestMapping(value = "/employees/add", method = RequestMethod.GET)
