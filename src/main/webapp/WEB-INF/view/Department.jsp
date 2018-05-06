@@ -25,7 +25,7 @@
 
 	</nav>
 	<p align="right">
-	<a class="btn btn-success" class="pull-right" href="#">Add Department</a>
+	<a class="btn btn-success" class="pull-right" href="/department/add">Add Department</a>
 	</p>
 	
 	<div class="container">
@@ -43,7 +43,7 @@
 					<td>${department.getId()}</td>
 					<td>${department.getName()}</td>
 					<td>${department.getBonus()}</td>
-					<td><a class="btn btn-primary" href="#">Update</a> <a class="btn btn-danger" href="#">Delete</a></td>
+					<td><a class="btn btn-primary" href="#">Update</a> <a class="btn btn-danger" href="/department/delete/${department.getId()}">Delete</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

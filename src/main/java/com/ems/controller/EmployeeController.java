@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ems.model.Employee;
 import com.ems.repository.EmployeeRepository;
@@ -28,19 +29,26 @@ public class EmployeeController {
 		return "Employees";
 	}
 
+	
+	
 	@RequestMapping(value = "/employees/add", method = RequestMethod.POST)
 	public void addEmployee(@RequestBody Employee emp) {
 
 		employeeRepository.save(emp);
 	}
+	
+	@RequestMapping(value = "/employees/add", method = RequestMethod.GET)
+	public String viewAddPage() {
+
+		return "Add";
+	}
 
 	@RequestMapping("/delete/{id}")
-	public void deleteEmployee(@PathVariable(value = "id") Long id) {
+	public ModelAndView deleteEmployee(@PathVariable(value = "id") Long id) {
 		Employee employee = new Employee();
 		employee.setId(id);
 		employeeRepository.delete(employee);
-//		Model model ;
-//		getAllEmployee(model);
+		return new ModelAndView("redirect:/employees");
 	}
 
 	@RequestMapping("/employee/{id}")

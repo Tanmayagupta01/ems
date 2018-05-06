@@ -24,7 +24,7 @@
 
 	</nav>
 	<p align="right">
-	<a class="btn btn-success" class="pull-right" href="#">Add Employee</a>
+	<a class="btn btn-success" class="pull-right" href="/employees/add">Add Employee </a>
 	</p>
 	<div class ="container">
 		<table class = "table table-striped">

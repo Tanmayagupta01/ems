@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ems.model.Department;
 import com.ems.repository.DepartmentRepository;
@@ -32,6 +33,11 @@ public class DepartmentController {
 	{
 		deptRepository.save(dept);
 	}
+	@RequestMapping(value="/department/add",method=RequestMethod.GET)
+	public String viewAddDepartment()
+	{
+		return "AddDepartment";
+	}
 	
 	@RequestMapping("/department/{id}")
 	public Department getDepartmentById(@PathVariable(value="id") Long id)
@@ -41,9 +47,10 @@ public class DepartmentController {
 	}
 	
 	@RequestMapping("/department/delete/{id}")
-	public void deleteEmployee(@PathVariable(value="id") Long id)
+	public ModelAndView deleteEmployee(@PathVariable(value="id") Long id)
 	{		
 		deptRepository.delete(getDepartmentById(id));
+		return new ModelAndView("redirect:/department");
 	}
 	
 	@RequestMapping("department/update/{id}")
