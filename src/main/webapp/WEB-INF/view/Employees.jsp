@@ -39,6 +39,7 @@
 				<th>Mobile Number</th>
 				<th>Salary</th>
 				<th>Email</th>
+				<th>Department</th>
 				<th>Action</th>
 			</thead>	
 			<tbody>
@@ -50,7 +51,8 @@
 					<td>${employee.getMobileNo()}</</td>
 					<td>${employee.getSalary()}</</td>
 					<td>${employee.getEmail()}</</td>
-					<td><a class="btn btn-primary" href="#">Update</a> <a class="btn btn-danger" href="/delete/${employee.getId()}">Delete</a></td>
+					<td>${employee.getDepartment().getName()}
+					<td><a class="btn btn-primary" href="/employee/update/${employee.getId()}">Update</a> <a class="btn btn-danger" href="/delete/${employee.getId()}">Delete</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"> -->
-<title>Department</title>
+<title>Update Department</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
 	
@@ -18,7 +18,7 @@
 	
 	<script type="text/javascript">
 	$(function() {
-		$('#addDepartmentForm').submit(function(e) {
+		$('#updateDepartmentForm').submit(function(e) {
 			// reference to form object
 			var form = $(this)
 			var url = form.attr("action");
@@ -70,17 +70,25 @@
 	</nav>
 	
 	<div class = "container">
-		<form id="addDepartmentForm"
-		 class="form-horizontal" action="/department/add" method="post">
+		<form id="updateDepartmentForm"
+		 class="form-horizontal" action="/department/update" method="post">
+		 
+		 
+		 <div class="form-group">
+		 	<label for="id">ID:</label>
+		 	<input type="text" class="form-control" id="id" name="id" value="${dept.getId()}" readonly="readonly">
+		 </div>
+		 
 			<div class="form-group">
 			<label for="dept">Name:</label>
-			<input type="text" class="form-control" id="dept" name="name">
+			<input type="text" class="form-control" id="dept" name="name" value="${dept.getName()}" readonly="readonly">
 		</div>
 			
 			<div class="form-group">
 			<label for="bonus">Bonus:</label>
-			<input type="number" name="bonus" class="form-control" id="bonus">
+			<input type="number" name="bonus" class="form-control" id="bonus" value="${dept.getBonus()}">
 		</div>
+		
 		<input name="save" type="submit" class="btn btn-success" /> &nbsp;
 		<a class="btn btn-danger" href="/department">Cancel</a>
 		</form>

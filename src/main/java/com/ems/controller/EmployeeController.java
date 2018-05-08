@@ -13,13 +13,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ems.model.Department;
 import com.ems.model.Employee;
+import com.ems.repository.DepartmentRepository;
 import com.ems.repository.EmployeeRepository;
 
 @Controller
 public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepository;
+	@Autowired
+	DepartmentRepository departmentRepository;
 
 	@RequestMapping("/employees")
 	public String getAllEmployee(Model model) {
@@ -40,9 +44,11 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/employees/add", method = RequestMethod.GET)
-	public String viewAddPage() {
-
-		return "Add";
+	public ModelAndView viewAddPage() {
+	
+		//model.addAttribute("departmentList",departmentRepository.findAll());
+		return new ModelAndView("Add","departmentList",departmentRepository.findAll());
+		//return "Add";
 	}
 
 	@RequestMapping("/delete/{id}")
@@ -58,15 +64,19 @@ public class EmployeeController {
 		return employeeRepository.findById(id).get();
 	}
 
-	@RequestMapping("/update/{id}")
-	public void updateEmployee(@PathVariable(value = "id") Long id) {
-		Employee employee = new Employee();
-		employee.setId(id);
-		employee.setName("Honey");
-		employee.setAddress("Kota");
-		employee.setMobileNo("9413201403");
-		employee.setEmail("tanmayagupta01@gmail.com");
-		employee.setSalary(20000);
-		employeeRepository.save(employee);
+	@RequestMapping(value="/employee/update", method=RequestMethod.POST)
+	public ModelAndView updateEmployee(@RequestBody Employee emp) {
+		employeeRepository.save(emp);
+		return new ModelAndView("redirect:/employees");
+	}
+	
+	@RequestMapping("/employee/update/{id}")
+	public String viewUpdateEmployee(@PathVariable(value="id") Long id, Model model)
+	{
+		Employee emp = employeeRepository.findById(id).get();
+	//	return new ModelAndView("UpdateEmployee","emp",emp);
+		model.addAttribute("emp",emp);
+		model.addAttribute("departmentList",departmentRepository.findAll());
+		return "UpdateEmployee";
 	}
 }

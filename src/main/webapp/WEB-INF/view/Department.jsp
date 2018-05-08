@@ -43,7 +43,7 @@
 					<td>${department.getId()}</td>
 					<td>${department.getName()}</td>
 					<td>${department.getBonus()}</td>
-					<td><a class="btn btn-primary" href="#">Update</a> <a class="btn btn-danger" href="/department/delete/${department.getId()}">Delete</a></td>
+					<td><a class="btn btn-primary" href="/department/update/${department.getId()}">Update</a> <a class="btn btn-danger" href="/department/delete/${department.getId()}">Delete</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
